@@ -1,0 +1,237 @@
+@font-face {
+  font-family: "Silka";
+  src: url(fonts/silka-semibold.ttf) format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url(fonts/inter-latin.woff2) format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+:root {
+  --orange: #FE660C;
+  --orange-soft: #FFA875;
+  --surface-dark: #232839;
+  --white: #FFFFFF;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+html, body { height: 100%; }
+
+body {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow-x: hidden;
+  grid-template-columns: minmax(0, 1fr);
+  background: var(--surface-dark);
+  color: var(--white);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Lille (Grand Place) behind everything, at the top: blue-toned (grey + a brand-blue colour layer), faded out towards
+   the bottom and the sides. Photo: Marie Lefrançois, public domain, Wikimedia Commons
+   (commons.wikimedia.org/wiki/File:Place_du_Général_de_Gaulle,_Lille.JPG) – no credit required. */
+.city {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: min(92svh, 1000px);
+  z-index: -1;
+  overflow: hidden;
+  -webkit-mask-image: radial-gradient(120% 85% at 50% 18%, #000 30%, rgba(0, 0, 0, .55) 58%, transparent 82%);
+          mask-image: radial-gradient(120% 85% at 50% 18%, #000 30%, rgba(0, 0, 0, .55) 58%, transparent 82%);
+}
+.city::before,
+.city::after {
+  content: "";
+  position: absolute;
+  inset: -12px;
+}
+.city::before {
+  background: url(img/lille-grand-place.jpg) center 82% / cover no-repeat;
+  filter: grayscale(1) contrast(1.15) brightness(.95);
+  opacity: .5;
+}
+/* Colours the grey photo in Oscar's deep blue */
+.city::after {
+  background: linear-gradient(180deg, rgba(23, 39, 91, .55), rgba(35, 40, 57, .85));
+  mix-blend-mode: multiply;
+}
+
+/* Top bar */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px clamp(20px, 5vw, 64px);
+}
+
+.logo { width: clamp(110px, 12vw, 144px); height: auto; color: var(--white); }
+
+.lang {
+  display: flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, .22);
+}
+
+.lang button {
+  font: 600 14px/1 "Inter", sans-serif;
+  letter-spacing: .04em;
+  color: var(--white);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+
+.lang button:hover { background: rgba(255, 255, 255, .14); }
+.lang button[aria-pressed="true"] { background: var(--orange); }
+.lang button:focus-visible { outline: 2px solid var(--white); outline-offset: 2px; }
+
+/* Hero: the cars in the middle, the text under them, northern France behind everything at the bottom */
+.hero {
+  --cars-w: min(360px, calc((100vw - 96px) * .9), 32.4svh);
+  /* The map keeps the size it had with the bigger cars, so France reads the same */
+  --map-w: calc(min(620px, calc(100vw - 40px), 55svh) * 2.6);
+  /* How deep into France the cars stand: their top is 190 of the map's 886 units below the northern border (about the
+     latitude of Amiens). From there down France is wide enough for the cars and the orange line on every screen size. */
+  --map-depth: calc(var(--map-w) * 190 / 886 - 8svh);   /* minus 8% of the screen height: the map sits a little lower */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+}
+
+.hero h1, .hero .lead { animation: rise .9s .25s ease-out both; }
+
+@keyframes rise {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+
+/* The three Oscar cars as one group above the headline */
+.cars {
+  position: relative;
+  z-index: 2;
+  width: var(--cars-w);
+  /* The exact outline of the three cars together (measured against Patrick's reference, 2026-10-30) */
+  aspect-ratio: 848 / 405;
+}
+
+/* The land starts --map-depth above the top of the cars, so the cars and the text all stand inside France.
+   (848 / 405 is the cars' outline, so their height is the width / 2.094.) */
+.land {
+  position: relative;
+  width: 100%;
+  /* 80px extra room above the map, so the blue glow around the coast is not cut off in a straight line */
+  margin-top: calc(var(--cars-w) / -2.094 - var(--map-depth) - 80px);
+  padding: calc(var(--cars-w) / 2.094 + var(--map-depth) + 80px + clamp(16px, 2.2vw, 28px)) clamp(20px, 5vw, 64px) 0;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* France: the point 57% across the drawing sits under the centre of the cars, where the north is widest.
+   Its size follows the screen (--map-w): on a desktop you see Brittany, the Channel coast and Alsace; on a phone
+   mainly the north. The south is cut off by the page edge. */
+.france {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  z-index: -1;
+  width: var(--map-w);
+  height: auto;
+  transform: translateX(-57%);
+  overflow: visible;
+}
+.france path {
+  fill: url(#france-glow);
+  stroke: rgba(170, 195, 255, .28);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  /* A soft glow along the coast, so the land stands out against the Lille photo: a tight bright rim + a wide soft halo */
+  filter:
+    drop-shadow(0 0 2px rgba(120, 160, 255, .3))
+    drop-shadow(0 0 40px rgba(53, 87, 194, .6));
+}
+
+.car {
+  position: absolute;
+  height: auto;
+  filter: drop-shadow(0 14px 16px rgba(11, 13, 23, .45));
+}
+
+/* Back to front. Position and size are fixed shares of the box, so the three cars keep exactly the same
+   placement and size relative to each other on every screen size (matched to Patrick's reference image). */
+.truck { left: 0;      top: 0;      width: 54.13%; z-index: 1; }
+.van   { left: 34.08%; top: 17.53%; width: 65.92%; z-index: 2; }
+.sedan { left: 4.25%;  top: 37.04%; width: 70.28%; z-index: 3; }
+
+h1 {
+  font-family: "Silka", "Inter", sans-serif;
+  font-weight: 600;
+  font-size: clamp(26px, 7.6vw, 76px);
+  line-height: 1;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+
+/* Smaller lead-in line above the big orange statement */
+.pre {
+  display: block;
+  font-size: .46em;
+  line-height: 1.15;
+  white-space: nowrap;
+  letter-spacing: -.01em;
+  margin-bottom: .18em;
+}
+
+.accent { color: var(--orange); }
+/* The orange statement ("on its way to France.") always stays on one line; the size above scales it down on phones */
+.accent { display: inline-block; white-space: nowrap; }
+
+.lead {
+  margin-top: 20px;
+  /* Three lines in all: the small line, the orange line and this one, each without a line break.
+     The size shrinks with the screen so the whole sentence fits on one line: --lead-k is the sentence's width in
+     units of its own font size (measured), so (screen width − margins) / k is the largest size that still fits.
+     Never smaller than 15px: on phones and small screens it wraps to two balanced lines instead (Patrick's call). */
+  --lead-k: 24.6;
+  font-size: max(15px, min(20px, calc((100vw - 40px) / var(--lead-k))));
+  text-wrap: balance;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, .85);
+}
+
+/* Footer */
+.foot {
+  margin-top: clamp(40px, 7vh, 80px);
+  padding: 0 0 20px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, .65);
+}
+
+:lang(fr) .lead { --lead-k: 31.4; }
+/* One line from the width where the sentence fits at 15px or more: (15 × k) + 40 */
+@media (min-width: 409px) { :lang(en) .lead { white-space: nowrap; } }
+@media (min-width: 511px) { :lang(fr) .lead { white-space: nowrap; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1, .hero .lead { animation: none; }
+}
