@@ -44,7 +44,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Lille (Grand Place) behind everything, at the top: blue-toned (grey + a brand-blue colour layer), faded out towards
+/* Lille (Grand Place) behind everything, at the top: in colour with a faint brand-blue wash, faded out towards
    the bottom and the sides. Photo: Marie Lefrançois, public domain, Wikimedia Commons
    (commons.wikimedia.org/wiki/File:Place_du_Général_de_Gaulle,_Lille.JPG) – no credit required. */
 .city {
@@ -71,12 +71,13 @@ body {
 }
 .city::before {
   background: url(img/lille-grand-place.jpg) center 82% / cover no-repeat;
-  filter: grayscale(1) contrast(1.1) brightness(1.05);
-  opacity: .3;
+  /* In colour (Patrick: grey looked almost black-and-white) – the blue sky and the warm brick facades, slightly softened */
+  filter: saturate(.9) contrast(1.02) brightness(1.04);
+  opacity: .5;
 }
-/* A faint brand-blue tint over the grey photo, so it reads as part of the page rather than a snapshot */
+/* A faint brand-blue wash over the photo, so it reads as part of the page rather than a snapshot */
 .city::after {
-  background: linear-gradient(180deg, rgba(41, 73, 163, .10), rgba(41, 73, 163, .04));
+  background: linear-gradient(180deg, rgba(41, 73, 163, .08), rgba(41, 73, 163, .02));
   mix-blend-mode: multiply;
 }
 
