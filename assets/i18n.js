@@ -3,12 +3,14 @@ const TEXT = {
   fr: {
     pageTitle: "Oscar – Bientôt en France",
     title: '<span class="pre">La location de voitures Oscar</span> <span class="accent">arrive en France.</span>',
-    lead: "Louez une voiture près de chez vous en quelques clics. Dès 2027.",
+    lead: '<span>Louez une voiture près de chez vous en quelques clics.</span> <span class="lead-when">Dès 2027.</span>',
+    partner: "Devenir partenaire",
   },
   en: {
     pageTitle: "Oscar – Coming soon to France",
     title: '<span class="pre">Oscar Car Rental is</span> <span class="accent">on its way to France.</span>',
-    lead: "Rent a car near you in a few clicks. Coming in 2027.",
+    lead: '<span>Rent a car near you in a few clicks.</span> <span class="lead-when">Coming in 2027.</span>',
+    partner: "Become a partner",
   },
 };
 

@@ -53,13 +53,13 @@ body {
   height: min(92svh, 1000px);
   z-index: -1;
   overflow: hidden;
-  /* Light theme: the grey sky fades into white at the top as well, so only the skyline shows */
+  /* Full strength at the top, fading out only towards the bottom and the sides */
   -webkit-mask-image:
-    linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .35) 18%, #000 38%, #000 52%, transparent 80%),
+    linear-gradient(180deg, #000 0%, #000 52%, transparent 80%),
     radial-gradient(130% 100% at 50% 40%, #000 45%, transparent 85%);
   -webkit-mask-composite: source-in;
           mask-image:
-    linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, .35) 18%, #000 38%, #000 52%, transparent 80%),
+    linear-gradient(180deg, #000 0%, #000 52%, transparent 80%),
     radial-gradient(130% 100% at 50% 40%, #000 45%, transparent 85%);
           mask-composite: intersect;
 }
@@ -72,8 +72,8 @@ body {
 .city::before {
   background: url(img/lille-grand-place.jpg) center 82% / cover no-repeat;
   /* In colour (Patrick: grey looked almost black-and-white) – the blue sky and the warm brick facades, slightly softened */
-  filter: saturate(.9) contrast(1.02) brightness(1.04);
-  opacity: .5;
+  filter: none;   /* full colour (Patrick) */
+  opacity: .85;
 }
 /* A faint brand-blue wash over the photo, so it reads as part of the page rather than a snapshot */
 .city::after {
@@ -262,10 +262,16 @@ h1 {
    longest orange line ("on its way to France.", about 9.1 × its font size wide in Inter Bold) still never wraps. The small line above
    gets a bigger share. The Lille photo moves up, so more of the skyline shows above the coast. */
 @media (max-width: 600px) {
+  .lead-when { display: block; }   /* phones: "Coming in 2027." on a line of its own */
   h1 { font-size: calc((100vw - 40px) / 9.3); }
   .pre { font-size: .62em; }
   .city::before { transform: translateY(-16%); }
 }
+
+/* "Become a partner" next to the copyright, to the partner site */
+.foot { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; }
+.foot a { color: var(--orange); font-weight: 600; text-decoration: none; }
+.foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero h1, .hero .lead { animation: none; }

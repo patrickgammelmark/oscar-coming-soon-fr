@@ -236,10 +236,16 @@ h1 {
    longest orange line ("on its way to France.", about 10 × its font size wide) still never wraps. The small line above
    gets a bigger share. The Lille photo moves up, so more of the skyline shows above the coast. */
 @media (max-width: 600px) {
+  .lead-when { display: block; }   /* phones: "Coming in 2027." on a line of its own */
   h1 { font-size: calc((100vw - 40px) / 10); }
   .pre { font-size: .56em; }
   .city::before { transform: translateY(-16%); }
 }
+
+/* "Become a partner" next to the copyright, to the partner site */
+.foot { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; }
+.foot a { color: var(--orange-soft); font-weight: 600; text-decoration: none; }
+.foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero h1, .hero .lead { animation: none; }
