@@ -232,6 +232,15 @@ h1 {
 @media (min-width: 409px) { :lang(en) .lead { white-space: nowrap; } }
 @media (min-width: 511px) { :lang(fr) .lead { white-space: nowrap; } }
 
+/* Phones: the headline as large as fits – the size follows the screen width (vw), so it scales with the phone and the
+   longest orange line ("on its way to France.", about 10 × its font size wide) still never wraps. The small line above
+   gets a bigger share. The Lille photo moves up, so more of the skyline shows above the coast. */
+@media (max-width: 600px) {
+  h1 { font-size: calc((100vw - 40px) / 10); }
+  .pre { font-size: .56em; }
+  .city::before { transform: translateY(-16%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero h1, .hero .lead { animation: none; }
 }
