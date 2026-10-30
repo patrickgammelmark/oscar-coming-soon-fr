@@ -23,8 +23,13 @@ You can also just double-click `index.html` – it works without the server too.
 
 ## Versions
 
-- `index.html` – the current page: northern France in Oscar blue, with a blue-toned photo of Lille (Grand Place) behind it (`assets/img/lille-grand-place.jpg`, `.city` in `assets/style.css`). Photo: Marie Lefrançois, public domain (Wikimedia Commons), no credit needed.
-- `index-v1-france-map.html` – the saved version without the Lille photo (uses its own copy of the styles, `assets/style-v1-france-map.css`). Open it the same way, e.g. http://localhost:8080/index-v1-france-map.html. To make it the live page again, rename it to `index.html`.
+- `index.html` – the current page, **light theme** in the style of the partner site (partenaire.oscarlocation.fr): white page, Inter Bold headline with the partner site's dark-to-grey gradient, pale Oscar-blue France, and a faded grey photo of Lille (Grand Place) behind it (`assets/img/lille-grand-place.jpg`, `.city` in `assets/style.css`). Photo: Marie Lefrançois, public domain (Wikimedia Commons), no credit needed.
+- `index-v2-dark.html` – the saved dark version with the Lille photo (its own copy of the styles: `assets/style-v2-dark.css`).
+- `index-v1-france-map.html` – the saved dark version without the Lille photo (`assets/style-v1-france-map.css`).
+
+Open a saved version the same way, e.g. http://localhost:8080/index-v2-dark.html. To make one the live page again, rename it to `index.html` (and its stylesheet to `assets/style.css`, or keep the link as it is).
+
+Online preview (GitHub Pages): https://patrickgammelmark.github.io/oscar-coming-soon-fr/
 
 ## Put it online
 
