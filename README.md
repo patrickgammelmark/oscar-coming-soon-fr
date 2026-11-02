@@ -23,7 +23,10 @@ You can also just double-click `index.html` – it works without the server too.
 
 ## Versions
 
-- `index.html` – the current page, **light theme** in the style of the partner site (partenaire.oscarlocation.fr): white page, Inter Bold headline with the partner site's dark-to-grey gradient, pale Oscar-blue France, and a faded colour photo of Lille (Grand Place) behind it (`assets/img/lille-grand-place.jpg`, `.city` in `assets/style.css`). Photo: Marie Lefrançois, public domain (Wikimedia Commons), no credit needed.
+- `index.html`, `v2.html`, `v3.html` – the current **light theme** (in the style of the partner site, partenaire.oscarlocation.fr) in three versions that differ only in the background photo, linked to each other at the bottom (V1 · V2 · V3). The photo per version is set at the top of `assets/style.css` (`.bg-v1`, `.bg-v2`, `.bg-v3`: picture, crop and colour):
+  - V1 – Lille, Grand Place (`assets/img/lille-grand-place.jpg`; Marie Lefrançois, public domain, Wikimedia Commons)
+  - V2 – Lille, Grand Place in summer (`assets/img/lille-grand-place-2.webp`; supplied by Patrick)
+  - V3 – Paris at sunset (`assets/img/paris-skyline.jpg`; Luca Micheli on Unsplash, free to use, no credit required; the full-size original is in `fr images/`)
 - `index-v2-dark.html` – the saved dark version with the Lille photo (its own copy of the styles: `assets/style-v2-dark.css`).
 - `index-v1-france-map.html` – the saved dark version without the Lille photo (`assets/style-v1-france-map.css`).
 

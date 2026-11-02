@@ -70,11 +70,11 @@ body {
   inset: -12px;
 }
 .city::before {
-  background: url(img/lille-grand-place.jpg) center 82% / cover no-repeat;
+  background: var(--city-img) var(--city-pos) / cover no-repeat;
   /* In colour (Patrick: grey looked almost black-and-white) – the blue sky and the warm brick facades, slightly softened */
   /* More colour and a bit more light (Patrick). 1 = the photo as it is: raise saturate() for stronger colours,
      brightness() for a lighter photo. */
-  filter: saturate(1.3) brightness(1.1);
+  filter: var(--city-filter);
   opacity: .85;
 }
 /* A faint brand-blue wash over the photo, so it reads as part of the page rather than a snapshot */
@@ -82,6 +82,14 @@ body {
   background: linear-gradient(180deg, rgba(41, 73, 163, .08), rgba(41, 73, 163, .02));
   mix-blend-mode: multiply;
 }
+
+/* Three background photos to compare (Patrick, 2026-11-02): the page's <body> class picks one.
+   v1 = Lille, Grand Place (Marie Lefrançois, public domain, Wikimedia Commons)
+   v2 = Lille, Grand Place in summer (supplied by Patrick)
+   v3 = Paris at sunset from above (Luca Micheli, Unsplash licence – free, no credit required) */
+.bg-v1 { --city-img: url(img/lille-grand-place.jpg);   --city-pos: center 82%; --city-filter: saturate(1.3) brightness(1.1); }
+.bg-v2 { --city-img: url(img/lille-grand-place-2.webp); --city-pos: center 60%; --city-filter: saturate(1.1) brightness(1.05); }
+.bg-v3 { --city-img: url(img/paris-skyline.jpg);        --city-pos: 30% 55%;    --city-filter: saturate(1.05) brightness(1.05); }
 
 /* Top bar */
 .top {
@@ -268,12 +276,16 @@ h1 {
   h1 { font-size: calc((100vw - 40px) / 9.3); }
   .pre { font-size: .62em; }
   .city::before { transform: translateY(-16%); }
+  .bg-v2 { --city-pos: 66% 60%; }   /* keep the belfry in view on a narrow screen */
 }
 
 /* "Become a partner" next to the copyright, to the partner site */
 .foot { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; }
 .foot a { color: inherit; text-decoration: none; }
 .foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Test links between the three background versions; the one you are on is bold */
+.foot .versions { display: inline-flex; gap: 6px; }
+.foot .versions a[aria-current="page"] { font-weight: 700; color: var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
   .hero h1, .hero .lead { animation: none; }
