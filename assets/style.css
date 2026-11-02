@@ -280,11 +280,50 @@ h1 {
   .city::before { transform: translateY(-16%); }
 }
 
-/* "Become a partner" next to the copyright, to the partner site */
-.foot { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; }
-.foot a { color: inherit; text-decoration: none; }
-.foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* "Become a partner": the partner site's own CTA button (partenaire.oscarlocation.fr, measured 2026-11-02) – Oscar orange,
+   8px corners, Inter SemiBold 18px, padding 20/18/20/24, a bold arrow, and on hover a dark round fill that grows in
+   from the bottom-left corner. */
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  padding: 20px 18px 20px 24px;
+  border-radius: 8px;
+  background: var(--orange);
+  color: var(--white);
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  line-height: 27px;
+  text-decoration: none;
+  overflow: hidden;
+  isolation: isolate;
+  animation: rise .9s .35s ease-out both;
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -64px;
+  bottom: -64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 500px;
+  background: #0C1523;
+  transition: width .5s ease, height .5s ease;
+}
+.cta:hover::before, .cta:focus-visible::before { width: calc(100% + 128px); height: calc(100% + 128px); }
+.cta:focus-visible { outline: 2px solid var(--blue-800); outline-offset: 3px; }
+.cta-arrow { width: 24px; height: 24px; fill: #F5F7F9; flex-shrink: 0; }
+@media (max-width: 600px) {
+  .cta { font-size: 16px; padding: 16px 16px 16px 20px; margin-top: 24px; }
+  .cta-arrow { width: 20px; height: 20px; }
+}
+.foot { margin-top: clamp(28px, 5vh, 56px); }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero h1, .hero .lead { animation: none; }
+  .hero h1, .hero .lead, .cta { animation: none; }
 }
