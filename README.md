@@ -23,7 +23,7 @@ You can also just double-click `index.html` – it works without the server too.
 
 ## Versions
 
-- `index.html`, `v2.html` … `v5.html` – the current **light theme** (in the style of the partner site, partenaire.oscarlocation.fr) in five versions that differ only in the background photo of Lille, linked to each other at the bottom (V1 … V5). The photo per version is set at the top of `assets/style.css` (`.bg-v1` … `.bg-v5`: picture and crop). The photos are licensed Adobe Stock images: only resized copies (`assets/img/bg-1.jpg` … `bg-5.jpg`) are published; the full-size originals (`AdobeStock_*.jpeg`) stay on this computer and are kept out of GitHub by `.gitignore`.
+- `index.html` – the current page, **light theme** in the style of the partner site (partenaire.oscarlocation.fr), with a photo of Grand Place, Lille behind France (`assets/img/bg-1.jpg`, set at `.bg-v1` in `assets/style.css`). It is a licensed Adobe Stock photo: only the resized copy is published; the full-size originals (`AdobeStock_*.jpeg`) stay on this computer and are kept out of GitHub by `.gitignore`. The other candidate photos (`bg-2.jpg` … `bg-5.jpg`) are kept in `assets/img`.
 - `index-v2-dark.html` – the saved dark version with the Lille photo (its own copy of the styles: `assets/style-v2-dark.css`).
 - `index-v1-france-map.html` – the saved dark version without the Lille photo (`assets/style-v1-france-map.css`).
 

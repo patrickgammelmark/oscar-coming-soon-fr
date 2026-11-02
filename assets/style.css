@@ -84,17 +84,11 @@ body {
   mix-blend-mode: multiply;
 }
 
-/* Five background photos to compare (Patrick, 2026-11-02): the page's <body> class picks one (index.html = V1,
-   v2.html … v5.html). All are licensed Adobe Stock photos; only these resized copies are published (originals stay
-   local, see .gitignore). Each is shown in its own colours: no blue wash, full opacity – only the fade-out stays.
-   --city-pos is the crop (horizontal vertical): raise the second number to move the photo up. --city-top lets the
-   photo start above the page on wider screens, for photos whose buildings sit low – the bottom stays where it is,
-   so no edge shows (phones always lift the photo by 16%). */
-.bg-v1 { --city-img: url(img/bg-1.jpg); --city-pos: center 40%; }
-.bg-v2 { --city-img: url(img/bg-2.jpg); --city-pos: center 25%; }
-.bg-v3 { --city-img: url(img/bg-3.jpg); --city-pos: 40% 100%; --city-top: -42%; }
-.bg-v4 { --city-img: url(img/bg-4.jpg); --city-pos: center 58%; }
-.bg-v5 { --city-img: url(img/bg-5.jpg); --city-pos: center 100%; --city-top: -34%; }
+/* The background photo (Patrick chose V1 of five, 2026-11-02): Grand Place, Lille – licensed Adobe Stock photo; only
+   this resized copy is published (the original stays local, see .gitignore). The other candidates (bg-2 … bg-5)
+   stay in assets/img. Shown in its own colours: no blue wash, full opacity – only the fade-out stays.
+   --city-pos is the crop (horizontal vertical); --city-top lets the photo start above the page (more negative = higher). */
+.bg-v1 { --city-img: url(img/bg-1.jpg); --city-pos: center 40%; --city-top: -32px; }   /* 20px higher than at first */
 [class^="bg-v"] { --city-filter: none; }
 [class^="bg-v"] .city::before { opacity: 1; }
 [class^="bg-v"] .city::after { display: none; }
@@ -284,16 +278,12 @@ h1 {
   h1 { font-size: calc((100vw - 40px) / 9.3); }
   .pre { font-size: .62em; }
   .city::before { transform: translateY(-16%); }
-  .bg-v5 { --city-top: -14%; }   /* less lift on phones, or the belfry slides under the logo */
 }
 
 /* "Become a partner" next to the copyright, to the partner site */
 .foot { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; }
 .foot a { color: inherit; text-decoration: none; }
 .foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
-/* Test links between the three background versions; the one you are on is bold */
-.foot .versions { display: inline-flex; gap: 6px; }
-.foot .versions a[aria-current="page"] { font-weight: 700; color: var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
   .hero h1, .hero .lead { animation: none; }
