@@ -114,7 +114,7 @@ body {
 }
 
 .lang button:hover { background: var(--surface-soft); }
-.lang button[aria-pressed="true"] { background: var(--orange); color: var(--white); }
+.lang button[aria-pressed="true"] { background: var(--blue-800); color: var(--white); }   /* same dark blue as the logo */
 .lang button:focus-visible { outline: 2px solid var(--blue-600); outline-offset: 2px; }
 
 /* Hero: the cars in the middle, the text under them, northern France behind everything at the bottom */
@@ -178,8 +178,8 @@ body {
 }
 .france path {
   fill: url(#france-glow);
-  stroke: rgba(41, 73, 163, .35);
-  stroke-width: 1.2;
+  stroke: rgba(41, 73, 163, .5);
+  stroke-width: 2;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
   /* A soft glow along the coast, so the land stands out against the Lille photo: a tight bright rim + a wide soft halo */
