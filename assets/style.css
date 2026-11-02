@@ -75,6 +75,7 @@ body {
   /* More colour and a bit more light (Patrick). 1 = the photo as it is: raise saturate() for stronger colours,
      brightness() for a lighter photo. */
   filter: var(--city-filter);
+  top: var(--city-top, -12px);
   opacity: .85;
 }
 /* A faint brand-blue wash over the photo, so it reads as part of the page rather than a snapshot */
@@ -83,16 +84,20 @@ body {
   mix-blend-mode: multiply;
 }
 
-/* Three background photos to compare (Patrick, 2026-11-02): the page's <body> class picks one.
-   v1 = Lille, Grand Place (Marie Lefrançois, public domain, Wikimedia Commons)
-   v2 = Lille, Grand Place in summer (supplied by Patrick)
-   v3 = Paris at sunset from above (Luca Micheli, Unsplash licence – free, no credit required) */
-.bg-v1 { --city-img: url(img/lille-grand-place.jpg);   --city-pos: center 82%; --city-filter: saturate(1.3) brightness(1.1); }
-.bg-v2 { --city-img: url(img/lille-grand-place-2.webp); --city-pos: center 60%; --city-filter: saturate(1.1) brightness(1.05); }
-.bg-v3 { --city-img: url(img/paris-skyline.jpg);        --city-pos: 30% 55%;    --city-filter: saturate(1.05) brightness(1.05); }
-/* V3 test (Patrick): the photo in its own colours – no blue wash on top, full opacity (only the fade-out stays) */
-.bg-v3 .city::before { opacity: 1; }
-.bg-v3 .city::after { display: none; }
+/* Five background photos to compare (Patrick, 2026-11-02): the page's <body> class picks one (index.html = V1,
+   v2.html … v5.html). All are licensed Adobe Stock photos; only these resized copies are published (originals stay
+   local, see .gitignore). Each is shown in its own colours: no blue wash, full opacity – only the fade-out stays.
+   --city-pos is the crop (horizontal vertical): raise the second number to move the photo up. --city-top lets the
+   photo start above the page on wider screens, for photos whose buildings sit low – the bottom stays where it is,
+   so no edge shows (phones always lift the photo by 16%). */
+.bg-v1 { --city-img: url(img/bg-1.jpg); --city-pos: center 40%; }
+.bg-v2 { --city-img: url(img/bg-2.jpg); --city-pos: center 25%; }
+.bg-v3 { --city-img: url(img/bg-3.jpg); --city-pos: 40% 100%; --city-top: -42%; }
+.bg-v4 { --city-img: url(img/bg-4.jpg); --city-pos: center 72%; }
+.bg-v5 { --city-img: url(img/bg-5.jpg); --city-pos: center 100%; --city-top: -22%; }
+[class^="bg-v"] { --city-filter: none; }
+[class^="bg-v"] .city::before { opacity: 1; }
+[class^="bg-v"] .city::after { display: none; }
 
 /* Top bar */
 .top {
@@ -279,7 +284,6 @@ h1 {
   h1 { font-size: calc((100vw - 40px) / 9.3); }
   .pre { font-size: .62em; }
   .city::before { transform: translateY(-16%); }
-  .bg-v2 { --city-pos: 66% 60%; }   /* keep the belfry in view on a narrow screen */
 }
 
 /* "Become a partner" next to the copyright, to the partner site */
