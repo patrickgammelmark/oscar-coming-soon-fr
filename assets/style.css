@@ -93,8 +93,8 @@ body {
 .bg-v1 { --city-img: url(img/bg-1.jpg); --city-pos: center 40%; }
 .bg-v2 { --city-img: url(img/bg-2.jpg); --city-pos: center 25%; }
 .bg-v3 { --city-img: url(img/bg-3.jpg); --city-pos: 40% 100%; --city-top: -42%; }
-.bg-v4 { --city-img: url(img/bg-4.jpg); --city-pos: center 72%; }
-.bg-v5 { --city-img: url(img/bg-5.jpg); --city-pos: center 100%; --city-top: -22%; }
+.bg-v4 { --city-img: url(img/bg-4.jpg); --city-pos: center 58%; }
+.bg-v5 { --city-img: url(img/bg-5.jpg); --city-pos: center 100%; --city-top: -34%; }
 [class^="bg-v"] { --city-filter: none; }
 [class^="bg-v"] .city::before { opacity: 1; }
 [class^="bg-v"] .city::after { display: none; }
@@ -284,6 +284,7 @@ h1 {
   h1 { font-size: calc((100vw - 40px) / 9.3); }
   .pre { font-size: .62em; }
   .city::before { transform: translateY(-16%); }
+  .bg-v5 { --city-top: -14%; }   /* less lift on phones, or the belfry slides under the logo */
 }
 
 /* "Become a partner" next to the copyright, to the partner site */
