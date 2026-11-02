@@ -90,6 +90,9 @@ body {
 .bg-v1 { --city-img: url(img/lille-grand-place.jpg);   --city-pos: center 82%; --city-filter: saturate(1.3) brightness(1.1); }
 .bg-v2 { --city-img: url(img/lille-grand-place-2.webp); --city-pos: center 60%; --city-filter: saturate(1.1) brightness(1.05); }
 .bg-v3 { --city-img: url(img/paris-skyline.jpg);        --city-pos: 30% 55%;    --city-filter: saturate(1.05) brightness(1.05); }
+/* V3 test (Patrick): the photo in its own colours – no blue wash on top, full opacity (only the fade-out stays) */
+.bg-v3 .city::before { opacity: 1; }
+.bg-v3 .city::after { display: none; }
 
 /* Top bar */
 .top {
