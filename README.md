@@ -1,6 +1,6 @@
 # Coming soon – Oscar France
 
-A simple one-page "coming soon" website for Oscar's upcoming French site. It shows a group of three Oscar cars (truck, van, car) in the middle, the headline under them, and the outline of northern France in Oscar blue behind it all at the bottom – with a FR / EN language switch at the top. French is the default.
+A simple one-page "coming soon" website for Oscar's upcoming French site. It shows a group of three Oscar cars (truck, van, car) in the middle, the headline under them, and the outline of northern France in Oscar blue behind it all at the bottom. The page is in French only.
 
 ## See it on your computer
 
@@ -16,7 +16,7 @@ You can also just double-click `index.html` – it works without the server too.
 
 ## Change things
 
-- **Text (French and English):** edit `assets/i18n.js` – each language has its own block.
+- **Text:** edit it directly in `index.html` (the headline `<h1>`, the line under it, and the "Devenir partenaire" button).
 - **The France outline:** drawn in `index.html` (the `<svg class="france">`), from free Natural Earth map data. Its colours are the three `stop-color` values in the same place; its size and position are `.france` and `.land` in `assets/style.css`. The cars and the text always stand inside France (`--map-depth` sets how deep).
 - **The cars:** the originals are in `fr images/`. The page uses smaller, trimmed copies in `assets/img/cars/`. Position and size of each car are set in `assets/style.css` (look for `.truck`, `.van`, `.sedan`). They are set as shares of one box, so the group looks the same on every screen size.
 - **Colours and sizes:** `assets/style.css` (uses the official Oscar brand colours).
@@ -39,7 +39,7 @@ The whole folder is plain files – no build step, no running costs. Drag the fo
 
 ```
 index.html          the page
-assets/i18n.js      all text in FR + EN
+assets/i18n.js      FR + EN text, only used by the two saved dark versions
 assets/style.css    look and layout
 assets/img/hero.jpg old background photo (no longer used)
 assets/img/cars/    the Oscar cars

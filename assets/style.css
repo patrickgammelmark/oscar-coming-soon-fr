@@ -99,39 +99,12 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 28px clamp(20px, 5vw, 64px);
-  /* Above the map area: on low screens (1280×720, small phones, landscape) the map's box reaches up under the header
-     and swallowed clicks on the language switcher */
+  /* Above the map area, so the logo is never covered on low screens */
   position: relative;
   z-index: 10;
 }
 
 .logo { width: clamp(110px, 12vw, 144px); height: auto; color: var(--blue-800); }
-
-.lang {
-  display: flex;
-  padding: 4px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(12, 15, 35, .1);
-}
-
-.lang button {
-  font: 600 14px/1 "Inter", sans-serif;
-  letter-spacing: .04em;
-  color: var(--ink);
-  background: transparent;
-  border: 0;
-  border-radius: 999px;
-  padding: 9px 16px;
-  cursor: pointer;
-  transition: background .2s, color .2s;
-}
-
-.lang button:hover { background: var(--surface-soft); }
-.lang button[aria-pressed="true"] { background: var(--blue-800); color: var(--white); }   /* same dark blue as the logo */
-.lang button:focus-visible { outline: 2px solid var(--blue-600); outline-offset: 2px; }
 
 /* Hero: the cars in the middle, the text under them, northern France behind everything at the bottom */
 .hero {
@@ -269,10 +242,9 @@ h1 {
   color: var(--muted);
 }
 
-:lang(fr) .lead { --lead-k: 31.4; }
+.lead { --lead-k: 31.4; }
 /* One line from the width where the sentence fits at 15px or more: (15 × k) + 40 */
-@media (min-width: 409px) { :lang(en) .lead { white-space: nowrap; } }
-@media (min-width: 511px) { :lang(fr) .lead { white-space: nowrap; } }
+@media (min-width: 511px) { .lead { white-space: nowrap; } }
 
 /* Phones: the headline as large as fits – the size follows the screen width (vw), so it scales with the phone and the
    longest orange line ("on its way to France.", about 9.1 × its font size wide in Inter Bold) still never wraps. The small line above
